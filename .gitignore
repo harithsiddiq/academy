@@ -1,0 +1,11 @@
+# Ignore everything by default
+*
+
+# But don't ignore these files and folders:
+!.gitignore
+!assets/
+!assets/**
+!*.html
+
+# Keep this file itself
+!README.md
