@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Management Certification Courses — Hero Only</title>
+    <meta name="description" content="Hero-only view of the landing page." />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+      /* Hide all sections except the first one (Hero), but show Mission & Vision and Core Values */
+      section:not(:first-of-type) { display: none !important; }
+      section#mission-vision, section#core-values, section#strategic-partners, section#services, section#contact, section#courses { display: block !important; }
+
+      /* Services Accordion RTL styles */
+      .services-accordion details {
+        border: 1px solid #e2e8f0; /* slate-200 */
+        border-radius: 1rem; /* rounded-2xl */
+        background: #fff;
+        padding: 0.75rem 1rem;
+        transition: box-shadow 200ms ease, border-color 200ms ease;
+      }
+      .services-accordion details + details { margin-top: 0.75rem; }
+      .services-accordion summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        list-style: none;
+      }
+      .services-accordion summary::-webkit-details-marker { display: none; }
+      .services-accordion .title {
+        font-weight: 600;
+        color: #0f172a; /* slate-900 */
+      }
+      .services-accordion .content {
+        margin-top: 0.75rem;
+        color: #334155; /* slate-700 */
+        font-size: 0.95rem;
+      }
+      .services-accordion .chevron { transition: transform 200ms ease; }
+      .services-accordion details[open] .chevron { transform: rotate(180deg); }
+      .services-accordion details:hover { box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06); border-color: #cbd5e1; }
+      .services-accordion summary:focus-visible { outline: 2px solid #06b6d4; outline-offset: 3px; }
+      .services-accordion ul li span:first-child { display: inline-block; margin-left: 0.5rem; }
+      @media (prefers-reduced-motion: reduce) { .services-accordion .chevron { transition: none; } }
+
+      /* Courses image tile grid styles */
+       #courses .course-tile { box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06); }
+       #courses .course-tile:hover { box-shadow: 0 16px 32px rgba(16, 24, 40, 0.10); }
+       #courses .course-tile img { display:block; }
+       @media (prefers-reduced-motion: reduce) { #courses .course-tile img { transition: none; } }
+    </style>
+  </head>
+  <body class="bg-white text-neutral-dark antialiased overflow-x-hidden min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="#" class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary-blue text-white font-bold">PM</span>
+            <span class="font-semibold text-lg">ProCert Academy</span>
+          </a>
+          <nav class="hidden md:flex items-center gap-8 text-sm" lang="ar" dir="rtl">
+            <a href="#courses" class="hover:text-cyan-accent">الدورات</a>
+            <a href="#overview" class="hover:text-cyan-accent">نظرة عامة</a>
+            <a href="#benefits" class="hover:text-cyan-accent">الفوائد</a>
+            <a href="#testimonials" class="hover:text-cyan-accent">المراجعات</a>
+            <a href="#faq" class="hover:text-cyan-accent">الأسئلة الشائعة</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-primary-blue text-white font-semibold shadow-glow hover:opacity-90 transition">سجّل الآن</a>
+            <button id="mobileMenuToggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 hover:bg-slate-50" aria-label="Toggle menu">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100" lang="ar" dir="rtl">
+        <div class="px-4 py-3 space-y-2">
+          <a href="#courses" class="block px-3 py-2 rounded-lg hover:bg-slate-50">الدورات</a>
+          <a href="#overview" class="block px-3 py-2 rounded-lg hover:bg-slate-50">نظرة عامة</a>
+          <a href="#benefits" class="block px-3 py-2 rounded-lg hover:bg-slate-50">الفوائد</a>
+          <a href="#testimonials" class="block px-3 py-2 rounded-lg hover:bg-slate-50">المراجعات</a>
+          <a href="#faq" class="block px-3 py-2 rounded-lg hover:bg-slate-50">الأسئلة الشائعة</a>
+          <a href="#contact" class="block px-3 py-2 rounded-lg bg-accent-500 text-white">سجّل الآن</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="relative overflow-hidden">
+      <div class="absolute inset-0 -z-10 bg-slate-50"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 py-12 sm:py-16 lg:py-20 items-center">
+          <!-- Copy -->
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-blue/10 text-primary-blue text-xs font-semibold mb-4">
+              <span class="inline-block w-2 h-2 rounded-full bg-brand-600"></span>
+              شهادات إدارة مشاريع معترف بها عالميًا
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900">
+              أتقِن إدارة المشاريع واحصل على الشهادة
+            </h1>
+            <p class="mt-4 text-gray-600 text-base sm:text-lg max-w-2xl">
+              تدريب بقيادة مدربين مع مشاريع عملية، إعداد للامتحان، وإرشاد. اختر PMP، CAPM، PRINCE2، Agile وغيرها.
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <a href="#courses" class="inline-flex items-center px-5 py-3 rounded-xl bg-brand-600 text-white font-semibold shadow-glow hover:bg-brand-700">
+                استكشف الدورات
+                <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="#contact" class="inline-flex items-center px-5 py-3 rounded-xl border border-slate-300 text-gray-900 font-semibold hover:bg-slate-50">احصل على استشارة مجانية</a>
+            </div>
+            <div class="mt-8 flex items-center gap-6 text-sm text-gray-600">
+              <div class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z" stroke="currentColor" stroke-width="2"/></svg>منهجية متوافقة مع معايير ISO</div>
+              <div class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none"><path d="M12 8v8m-4-4h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>ضمان اجتياز الامتحان</div>
+              <div class="flex items-center gap-2"><svg class="w-5 h-5 text-brand-600" viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h10M4 18h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>دفعات عطلة نهاية الأسبوع</div>
+            </div>
+          </div>
+          <!-- Visual -->
+          <div class="relative">
+            <div class="relative mx-auto w-[320px] h-[320px] sm:w-[380px] sm:h-[380px]">
+              <div class="absolute inset-0 rounded-full border-[12px] border-brand-200"></div>
+              <div class="absolute inset-0 rounded-full border-[12px] border-brand-500/40 animate-spin-slow"></div>
+              <div class="absolute inset-8 rounded-full bg-white shadow-card flex flex-col items-center justify-center text-center">
+                <p class="text-sm text-gray-500">Certification Roadmap</p>
+                <div class="mt-2 text-3xl font-extrabold text-brand-700">PMP</div>
+                <p class="mt-1 text-xs text-gray-500">Agile • PRINCE2 • CAPM</p>
+                <div class="mt-4 flex items-center gap-3">
+                  <div class="text-center"><div class="text-xl font-bold text-brand-600">4.8</div><div class="text-xs text-gray-500">Rating</div></div>
+                  <div class="text-center"><div class="text-xl font-bold text-brand-600">15k+</div><div class="text-xs text-gray-500">Learners</div></div>
+                  <div class="text-center"><div class="text-xl font-bold text-brand-600">96%</div><div class="text-xs text-gray-500">Pass rate</div></div>
+                </div>
+              </div>
+              <div class="absolute -left-6 -top-6 px-3 py-1 rounded-full bg-accent-500 text-white text-xs font-semibold shadow-card">Live Online</div>
+              <div class="absolute -right-6 -bottom-6 px-3 py-1 rounded-full bg-brand-600 text-white text-xs font-semibold shadow-card">Placement Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission & Vision (Arabic) -->
+    <section id="mission-vision" class="py-12 sm:py-16 bg-slate-50" lang="ar" dir="rtl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-right max-w-5xl ml-auto">
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">الرسالة والرؤية</h3>
+          <div class="mt-6 grid md:grid-cols-2 gap-6">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+              <h4 class="font-semibold text-primary-blue">الرسالة</h4>
+              <p class="mt-2 text-sm text-gray-700">تسريع دخول سوق العمل والتميز في هندسة مراكز البيانات في دول مجلس التعاون الخليجي من خلال توفير التدريب العملي، والاستشارات المتخصصة، وأفضل الممارسات المُثبتة في هذا المجال، بما يُحقق أثرًا مستدامًا.</p>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+              <h4 class="font-semibold text-primary-blue">الرؤية</h4>
+              <p class="mt-2 text-sm text-gray-700">أن نصبح الأكاديمية الموثوقة في المنطقة، ومركزًا لخبرة البنية التحتية لمراكز البيانات، ونبضًا للتطوير المتكامل في منطقة الشرق الأوسط وشمال أفريقيا، حيث تلتقي المؤسسات والمتخصصون للتعلم والتطبيق والقيادة.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Values (Arabic) -->
+    <section id="core-values" class="py-12 sm:py-16 bg-white" lang="ar" dir="rtl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-right max-w-6xl ml-auto">
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">القيم الأساسية</h3>
+          <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- سهولة الوصول -->
+            <div class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-card hover:shadow-glow transition">
+              <div class="flex items-start gap-3 justify-end">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center">
+                  <!-- Accessibility icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="5" r="2" fill="currentColor"/><path d="M5 9h14M7 9l3 10m7-10-3 10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="text-right">
+                  <h4 class="font-semibold">سهولة الوصول</h4>
+                  <p class="mt-2 text-sm text-gray-700">إتاحة المعرفة العملية بمراكز البيانات للمتعلمين والفرق على جميع المستويات.</p>
+                </div>
+              </div>
+            </div>
+            <!-- الخبرة -->
+            <div class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-card hover:shadow-glow transition">
+              <div class="flex items-start gap-3 justify-end">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center">
+                  <!-- Experience icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 7h16v10a2 2 0 01-2 2H6a2 2 0 01-2-2V7z" stroke="currentColor" stroke-width="2"/><path d="M9 7V5a3 3 0 016 0v2" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <div class="text-right">
+                  <h4 class="font-semibold">الخبرة</h4>
+                  <p class="mt-2 text-sm text-gray-700">تقديم محتوى واستشارات مبنية على خبرة تزيد عن 23 عامًا في مشاريع دول مجلس التعاون الخليجي، ونتائج ملموسة.</p>
+                </div>
+              </div>
+            </div>
+            <!-- الاستدامة -->
+            <div class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-card hover:shadow-glow transition">
+              <div class="flex items-start gap-3 justify-end">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center">
+                  <!-- Sustainability icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3c4 4 4 10 0 14-4-4-4-10 0-14z" stroke="currentColor" stroke-width="2"/><path d="M6 21c4-1 8-3 10-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="text-right">
+                  <h4 class="font-semibold">الاستدامة</h4>
+                  <p class="mt-2 text-sm text-gray-700">تعزيز التصاميم والعمليات المُراعية لاستهلاك الطاقة، والمُواكبة للمستقبل.</p>
+                </div>
+              </div>
+            </div>
+            <!-- التعاون -->
+            <div class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-card hover:shadow-glow transition">
+              <div class="flex items-start gap-3 justify-end">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center">
+                  <!-- Collaboration icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="2"/><circle cx="16" cy="8" r="3" stroke="currentColor" stroke-width="2"/><path d="M4 19c1.5-3 4-5 8-5s6.5 2 8 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="text-right">
+                  <h4 class="font-semibold">التعاون</h4>
+                  <p class="mt-2 text-sm text-gray-700">ربط الأوساط الأكاديمية والقطاع الصناعي والحكومية لخلق شراكات فعّالة في مجال التعلم والمشاريع.</p>
+                </div>
+              </div>
+            </div>
+            <!-- الوضوح -->
+            <div class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-card hover:shadow-glow transition">
+              <div class="flex items-start gap-3 justify-end">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center">
+                  <!-- Clarity icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l2 4 4 2-4 2-2 4-2-4-4-2 4-2 2-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 19h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <div class="text-right">
+                  <h4 class="font-semibold">الوضوح</h4>
+                  <p class="mt-2 text-sm text-gray-700">ترجمة الهندسة المُعقدة إلى إرشادات عملية وجاهزة لاتخاذ القرارات.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services (Arabic) - Unique RTL Accordion -->
+     <section id="services" class="py-12 sm:py-16 bg-slate-50" lang="ar" dir="rtl">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="text-right max-w-6xl ml-auto">
+           <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">خدماتنا</h3>
+           <p class="mt-2 text-gray-600 text-sm">حلول تعليمية واستشارية متخصصة للمنشآت الحرجة، بتصميم عملي وتطبيق مباشر.</p>
+ 
+           <div class="services-accordion mt-8 space-y-3">
+             <!-- دورات تدريبية -->
+             <details>
+               <summary>
+                 <div class="flex items-center gap-3 justify-end">
+                   <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center">
+                     <!-- Book icon -->
+                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 6h12a2 2 0 012 2v10H6a2 2 0 01-2-2V6z" stroke="currentColor" stroke-width="2"/><path d="M8 6V4h8v2" stroke="currentColor" stroke-width="2"/></svg>
+                   </div>
+                   <span class="title">دورات تدريبية (متخصصة، مهارات تقنية، مهارات ناعمة)</span>
+                 </div>
+                 <svg class="chevron w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+               </summary>
+               <div class="content">
+                 <ul class="mt-3 space-y-2">
+                   <li class="flex items-start gap-2 justify-end"><span class="mt-1 w-1.5 h-1.5 bg-brand-600 rounded-full"></span><span>متخصصة: مختصي الهندسة الميكانيكية، الهندسة الكهربائية.</span></li>
+                   <li class="flex items-start gap-2 justify-end"><span class="mt-1 w-1.5 h-1.5 bg-brand-600 rounded-full"></span><span>مهارات تقنية: تفاصيل تقنية أكثر لعدد من المتطلبات.</span></li>
+                   <li class="flex items-start gap-2 justify-end"><span class="mt-1 w-1.5 h-1.5 bg-brand-600 rounded-full"></span><span>مهارات ناعمة: دورات متخصصة عن المهارات الناعمة الضرورية للمجال.</span></li>
+                 </ul>
+               </div>
+             </details>
+ 
+             <!-- ندوات تقنية -->
+             <details>
+               <summary>
+                 <div class="flex items-center gap-3 justify-end">
+                   <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center">
+                     <!-- Megaphone icon -->
+                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10l12-4v12l-12-4z" stroke="currentColor" stroke-width="2"/><path d="M6 14v4" stroke="currentColor" stroke-width="2"/></svg>
+                   </div>
+                   <span class="title">ندوات تقنية</span>
+                 </div>
+                 <svg class="chevron w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+               </summary>
+               <div class="content">
+                 <p>التركيز على أحد المنتجات التي تخص المنشآت الحرجة ومعرفة الجوانب المهمة: تصميم، تنفيذ، تشغيل، وصيانة.</p>
+               </div>
+             </details>
+ 
+             <!-- ورش عمل متخصصة -->
+             <details>
+               <summary>
+                 <div class="flex items-center gap-3 justify-end">
+                   <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center">
+                     <!-- Tools icon -->
+                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 7a4 4 0 11-4 4l-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 13l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                   </div>
+                   <span class="title">ورش عمل متخصصة</span>
+                 </div>
+                 <svg class="chevron w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+               </summary>
+               <div class="content">
+                 <p>تطبيق عملي على مشروع لحالة معينة، والخوض في تفاصيلها ومعرفة كيفية التعامل معها.</p>
+               </div>
+             </details>
+ 
+             <!-- استشارات مهنية وإرشادية -->
+             <details>
+               <summary>
+                 <div class="flex items-center gap-3 justify-end">
+                   <div class="flex-shrink-0 w-10 h-10 rounded-lg bg-brand-100 text-brand-600 flex items-center justify-center">
+                     <!-- Lightbulb icon -->
+                     <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a6 6 0 016 6c0 2.5-1.5 3.8-2.5 5.2-.6.9-1.1 1.8-1.1 2.8H9.6c0-1 .5-1.9 1.1-2.8C9.7 12.8 8 11.5 8 9a6 6 0 016-6z" stroke="currentColor" stroke-width="2"/><path d="M9 19h6M10 22h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                   </div>
+                   <span class="title">استشارات مهنية وإرشادية</span>
+                 </div>
+                 <svg class="chevron w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+               </summary>
+               <div class="content">
+                 <p>مساعدة الممارسين في تسريع التعلم والتركيز لتحسين الممارسات وزيادة فعاليتها.</p>
+               </div>
+             </details>
+           </div>
+         </div>
+       </div>
+     </section>
+ 
+      <!-- Strategic Partner (Arabic) -->
+      <section id="strategic-partners" class="py-12 sm:py-16 bg-slate-50" lang="ar" dir="rtl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-right max-w-6xl ml-auto">
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">الشريك الاستراتيجي</h3>
+          <p class="mt-2 text-gray-600 text-sm">ستُضاف شركاء آخرون قريبًا — البداية مع VMCO.</p>
+          <div class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- VMCO Card -->
+            <div class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-card hover:shadow-glow transition">
+              <div class="flex items-start gap-3 justify-end">
+                <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center">
+                  <!-- Handshake icon -->
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 10l3-3a3 3 0 114 4l-5 5a3 3 0 11-4-4l2-2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M7 13l-2 2a3 3 0 104 4l3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="text-right">
+                  <h4 class="font-semibold">VMCO</h4>
+                  <p class="mt-2 text-sm text-gray-700">شراكة استراتيجية لدعم برامج التدريب والاستشارات وتوسيع الوصول.</p>
+                  <div class="mt-4 flex gap-3 justify-end">
+                    <a href="#" class="inline-flex items-center px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700">تفاصيل الشراكة</a>
+                    <span class="inline-flex items-center px-3 py-2 rounded-lg border border-slate-200 text-gray-700 text-xs">المزيد قريبًا</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Courses -->
+    <section id="courses" class="min-h-screen py-12 sm:py-16 bg-white" lang="en" dir="ltr">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-left mb-8">
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Courses</h3>
+          <p class="mt-2 text-gray-600 text-sm">Choose a track and dive in.</p>
+        </div>
+        <div class="course-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <a href="course.html#mechanical" class="course-tile group relative overflow-hidden rounded-2xl" aria-label="Mechanical Engineering">
+            <img src="https://images.unsplash.com/photo-1517433456452-f9633a875f6f?auto=format&fit=crop&w=800&q=60" alt="Mechanical Engineering" class="w-full h-48 sm:h-56 object-cover transition-transform duration-300 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <div class="text-xs uppercase tracking-wide opacity-90">Mechanical</div>
+              <div class="text-lg font-semibold">Mechanical Engineering</div>
+              <div class="text-xs opacity-80">HVAC, pumps, piping, fire systems</div>
+            </div>
+          </a>
+          <a href="course.html#electrical" class="course-tile group relative overflow-hidden rounded-2xl" aria-label="Electrical Engineering">
+            <img src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?auto=format&fit=crop&w=800&q=60" alt="Electrical Engineering" class="w-full h-48 sm:h-56 object-cover transition-transform duration-300 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <div class="text-xs uppercase tracking-wide opacity-90">Electrical</div>
+              <div class="text-lg font-semibold">Electrical Engineering</div>
+              <div class="text-xs opacity-80">Power, distribution, protection, lighting</div>
+            </div>
+          </a>
+          <a href="course.html#technical" class="course-tile group relative overflow-hidden rounded-2xl" aria-label="Technical Courses">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=60" alt="Technical Courses" class="w-full h-48 sm:h-56 object-cover transition-transform duration-300 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <div class="text-xs uppercase tracking-wide opacity-90">Technical</div>
+              <div class="text-lg font-semibold">Technical Courses</div>
+              <div class="text-xs opacity-80">Critical facility products & applications</div>
+            </div>
+          </a>
+          <a href="course.html#soft-skills" class="course-tile group relative overflow-hidden rounded-2xl" aria-label="Soft Skills">
+            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=800&q=60" alt="Soft Skills" class="w-full h-48 sm:h-56 object-cover transition-transform duration-300 group-hover:scale-105" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4 text-white">
+              <div class="text-xs uppercase tracking-wide opacity-90">Soft Skills</div>
+              <div class="text-lg font-semibold">Soft Skills</div>
+              <div class="text-xs opacity-80">Leadership, communication, teamwork</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="py-12 sm:py-16 bg-white" lang="en" dir="ltr">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 gap-8 items-start">
+          <!-- Contact Info -->
+          <div class="text-left">
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight">Contact Us</h3>
+            <p class="mt-2 text-gray-600 text-sm">We’d love to hear from you. Send a message and we’ll get back soon.</p>
+            <div class="mt-6 space-y-3 text-sm text-gray-700">
+              <div class="flex items-center gap-3">
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary-blue text-white font-bold">PM</span>
+                <span>ProCert Academy</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 5h18v14H3z" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2"/></svg>
+                <a href="mailto:info@example.com" class="hover:text-cyan-accent">info@example.com</a>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-gray-500" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 4h6l2 3h8v13H4z" stroke="currentColor" stroke-width="2"/></svg>
+                <span>Riyadh, Saudi Arabia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card" action="#" method="post">
+            <div class="grid gap-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input id="name" name="name" type="text" required class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="Your name" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="you@example.com" />
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="How can we help?"></textarea>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <button type="submit" class="inline-flex items-center px-5 py-3 rounded-xl bg-brand-600 text-white font-semibold shadow-glow hover:bg-brand-700">
+                Send Message
+                <svg class="ml-2 w-4 h-4" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <a href="tel:+966000000000" class="inline-flex items-center px-4 py-2 rounded-xl border border-slate-300 text-gray-900 font-semibold hover:bg-slate-50">Call Us</a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid md:grid-cols-4 gap-8">
+          <!-- Brand -->
+          <div class="md:col-span-1">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-600 text-white font-bold text-lg">PM</span>
+              <span class="font-bold text-xl">PMI Academy</span>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              Empowering professionals with globally recognized project management certifications and expert training.
+            </p>
+            <div class="flex items-center gap-4">
+              <a href="#" aria-label="Twitter" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="LinkedIn" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-14h4v2a4 4 0 014-2z"/>
+                  <circle cx="4" cy="4" r="2"/>
+                  <path d="M2 8h4v14H2z"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h5 class="font-semibold text-lg mb-4">Quick Links</h5>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="#courses" class="text-gray-400 hover:text-white transition-colors">Courses</a></li>
+              <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">Testimonials</a></li>
+              <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+              <li><a href="course.html" class="text-gray-400 hover:text-white transition-colors">Course Details</a></li>
+            </ul>
+          </div>
+
+          <!-- Certifications -->
+          <div>
+            <h5 class="font-semibold text-lg mb-4">Certifications</h5>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">PMP Certification</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">CAPM Certification</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">PMI-ACP (Agile)</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">PRINCE2</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Scrum Master</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h5 class="font-semibold text-lg mb-4">Contact Info</h5>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                </svg>
+                <div>
+                  <p class="text-gray-400">support@pmiacademy.com</p>
+                  <p class="text-gray-400">admissions@pmiacademy.com</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                </svg>
+                <div>
+                  <p class="text-gray-400">+1 (555) 123-4567</p>
+                  <p class="text-gray-400 text-xs">Mon-Fri: 9AM-6PM EST</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                  <p class="text-gray-400">123 Business Center Dr</p>
+                  <p class="text-gray-400">Suite 100, New York, NY 10001</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
+          <div class="text-sm text-gray-400">
+            © <span id="year"></span> PMI Academy. All rights reserved.
+          </div>
+          <div class="flex items-center gap-6 mt-4 sm:mt-0 text-sm">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/main.js"></script>
+  </body>
+</html>
