@@ -51,6 +51,12 @@
       .services-accordion details[open] .chevron { transform: rotate(180deg); }
       .services-accordion details:hover { box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06); border-color: #cbd5e1; }
       .services-accordion summary:focus-visible { outline: 2px solid #06b6d4; outline-offset: 3px; }
+
+      /* Responsive alignment for hero action and metrics rows */
+      @media (min-width: 768px) {
+        .hero-actions { justify-content: flex-start !important; }
+        .hero-metrics { justify-content: flex-start !important; }
+      }
       .services-accordion ul li span:first-child { display: inline-block; margin-left: 0.5rem; }
       @media (prefers-reduced-motion: reduce) { .services-accordion .chevron { transition: none; } }
 
@@ -159,22 +165,22 @@
             </h1>
             <p class="mt-4 text-gray-600 text-base sm:text-lg max-w-2xl">
               تدريب بقيادة مدربين مع مشاريع عملية، إعداد للامتحان، وإرشاد. اختر PMP، CAPM، PRINCE2، Agile وغيرها.
-            </p>
-            <div class="mt-6 flex flex-wrap items-center gap-3">
+</p>      <div class="mt-6 flex flex-wrap items-center justify-center text-center bg-red-700 gap-3 hero-actions" style="justify-content:center;">
               <a href="#courses" class="inline-flex items-center px-5 py-3 rounded-xl bg-brand-600 text-white font-semibold shadow-glow hover:bg-brand-700">
                 استكشف الدورات
                 <i class="fi fi-rr-arrow-right ml-2 w-4 h-4"></i>
               </a>
               <a href="#contact" class="inline-flex items-center px-5 py-3 rounded-xl border border-slate-300 text-gray-900 font-semibold hover:bg-slate-50">احصل على استشارة مجانية</a>
             </div>
-            <div class="mt-8 flex items-center gap-6 text-sm text-gray-600">
+      
+            <div class="mt-8 flex items-center justify-center gap-6 text-sm text-gray-600 hero-metrics" style="justify-content:center;">
               <div class="flex items-center gap-2"><img src="./assets/up.svg"  alt="up"/ width="25">37 مشروع <br /> محلي معتمد</div>
                 <div class="flex items-center gap-2"><img src="./assets/up.svg"  alt="up"/ width="25">93% نسبة <br /> فرص المتدربين</div>
             </div>
           </div>
           <!-- Visual -->
           <div class="relative">
-            <div class="relative mx-auto w-[320px] h-[320px] sm:w-[380px] sm:h-[380px]">
+            <div class="relative mx-auto w-[320px] h-[320px] sm:w-[380px] sm:h-[120px]">
               <img src="/assets/logo.svg" alt="Hero" class="absolute inset-0 w-full h-full object-cover rounded-2xl ">
            </div>
           </div>
