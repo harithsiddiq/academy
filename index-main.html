@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Project Management Certification Courses — Hero Only</title>
+    <meta name="description" content="Hero-only view of the landing page." />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Flaticon Library -->
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+      /* Hide all sections except the first one (Hero), but show Mission & Vision and Core Values */
+      /* section:not(:first-of-type) { display: none !important; } */
+      section#mission-vision, section#core-values, section#strategic-partners, section#services, section#contact, section#courses, section#image-bg-section، section#trainers { display: block !important; }
+
+      /* Services Accordion RTL styles */
+      .services-accordion details {
+        border: 1px solid #e2e8f0; /* slate-200 */
+        border-radius: 1rem; /* rounded-2xl */
+        background: #fff;
+        padding: 0.75rem 1rem;
+        transition: box-shadow 200ms ease, border-color 200ms ease;
+      }
+      .services-accordion details + details { margin-top: 0.75rem; }
+      .services-accordion summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        list-style: none;
+      }
+      .services-accordion summary::-webkit-details-marker { display: none; }
+      .services-accordion .title {
+        font-weight: 600;
+        color: #0f172a; /* slate-900 */
+      }
+      .services-accordion .content {
+        margin-top: 0.75rem;
+        color: #334155; /* slate-700 */
+        font-size: 0.95rem;
+      }
+      .services-accordion .chevron { transition: transform 200ms ease; }
+      .services-accordion details[open] .chevron { transform: rotate(180deg); }
+      .services-accordion details:hover { box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06); border-color: #cbd5e1; }
+      .services-accordion summary:focus-visible { outline: 2px solid #06b6d4; outline-offset: 3px; }
+      .services-accordion ul li span:first-child { display: inline-block; margin-left: 0.5rem; }
+      @media (prefers-reduced-motion: reduce) { .services-accordion .chevron { transition: none; } }
+
+      /* Courses image tile grid styles */
+       #courses .course-tile { box-shadow: 0 8px 24px rgba(16, 24, 40, 0.06); }
+       #courses .course-tile:hover { box-shadow: 0 16px 32px rgba(16, 24, 40, 0.10); }
+       #courses .course-tile img { display:block; }
+       @media (prefers-reduced-motion: reduce) { #courses .course-tile img { transition: none; } }
+
+           .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .copy-section {
+        order: 1;
+      }
+
+      .relative {
+        order: 2;
+      }
+
+    @media (max-width: 989px) {
+      .copy-section {
+        text-align: center;
+        order: 2;
+      }
+      .relative {
+        text-align: center;
+        order: 1;
+      }
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: transparent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    </style>
+  </head>
+  <body class="bg-white text-neutral-dark antialiased overflow-x-hidden min-h-screen">
+    <!-- Header -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+          <a href="#" class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary-blue text-white font-bold">EH</span>
+            <span class="font-semibold text-lg">EradcHub</span>
+          </a>
+          <nav class="hidden md:flex items-center gap-8 text-sm" lang="ar" dir="rtl">
+            <a href="#home" class="hover:text-cyan-accent">الرئيسية</a>
+            <a href="#vision" class="hover:text-cyan-accent">من نحن</a>
+            <a href="#trainer" class="hover:text-cyan-accent">تدريباتنا</a>
+            <a href="#services" class="hover:text-cyan-accent">خدماتنا</a>
+            <a href="#projects" class="hover:text-cyan-accent">قصص النجاح</a>
+            <a href="#projects" class="hover:text-cyan-accent">مقالات</a>
+            <a href="#contact" class="hover:text-cyan-accent">اتصل بنا</a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-primary-blue text-white font-semibold shadow-glow hover:opacity-90 transition">Get Free Session</a>
+            <button id="mobileMenuToggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-slate-200 hover:bg-slate-50" aria-label="Toggle menu">
+              <i class="fi fi-rr-menu-burger w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile menu -->
+      <div id="mobileMenu" class="md:hidden hidden border-t border-slate-100" lang="ar" dir="rtl">
+  <div class="px-4 py-3 space-y-2">
+    <a href="#home" class="block px-3 py-2 rounded-lg hover:bg-slate-50">الرئيسية</a>
+    <a href="#vision" class="block px-3 py-2 rounded-lg hover:bg-slate-50">من نحن</a>
+    <a href="#trainer" class="block px-3 py-2 rounded-lg hover:bg-slate-50">تدريباتنا</a>
+    <a href="#services" class="block px-3 py-2 rounded-lg hover:bg-slate-50">خدماتنا</a>
+    <a href="#projects" class="block px-3 py-2 rounded-lg hover:bg-slate-50">قصص النجاح</a>
+    <a href="#projects" class="block px-3 py-2 rounded-lg hover:bg-slate-50">مقالات</a>
+    <a href="#contact" class="block px-3 py-2 rounded-lg bg-accent-500 text-white">اتصل بنا</a>
+  </div>
+</div>
+    </header>
+
+    <!-- Hero -->
+    <section id="home" class="relative overflow-hidden  ">
+     <div class="absolute inset-0" style="z-index:0; pointer-events:none; background-image: linear-gradient(to bottom right, #2563eb 0%, #fdf6ec 40%, #ffffff 55%, #93c5fd 100%);"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-10 py-12 sm:py-16 lg:py-20 items-center">
+          <!-- Copy -->
+          <div class="copy-section">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-blue/10 text-primary-blue text-xs font-semibold mb-4">
+              <span class="inline-block w-2 h-2 rounded-full bg-brand-600"></span>
+              شهادات إدارة مشاريع معترف بها عالميًا
+            </div>
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-gray-900 leading " style="line-height: 1.4;">
+              إبدأ مسيرتك في<br /> مراكز البيانات في الخليج
+            </h1>
+            <p class="mt-4 text-gray-600 text-base sm:text-lg max-w-2xl">
+              تدريب بقيادة مدربين مع مشاريع عملية، إعداد للامتحان، وإرشاد. اختر PMP، CAPM، PRINCE2، Agile وغيرها.
+            </p>
+            <div class="mt-6 flex flex-wrap items-center gap-3">
+              <a href="#courses" class="inline-flex items-center px-5 py-3 rounded-xl bg-brand-600 text-white font-semibold shadow-glow hover:bg-brand-700">
+                استكشف الدورات
+                <i class="fi fi-rr-arrow-right ml-2 w-4 h-4"></i>
+              </a>
+              <a href="#contact" class="inline-flex items-center px-5 py-3 rounded-xl border border-slate-300 text-gray-900 font-semibold hover:bg-slate-50">احصل على استشارة مجانية</a>
+            </div>
+            <div class="mt-8 flex items-center gap-6 text-sm text-gray-600">
+              <div class="flex items-center gap-2"><img src="./assets/up.svg"  alt="up"/ width="25">37 مشروع <br /> محلي معتمد</div>
+                <div class="flex items-center gap-2"><img src="./assets/up.svg"  alt="up"/ width="25">93% نسبة <br /> فرص المتدربين</div>
+            </div>
+          </div>
+          <!-- Visual -->
+          <div class="relative">
+            <div class="relative mx-auto w-[320px] h-[320px] sm:w-[380px] sm:h-[380px]">
+              <img src="/assets/logo.svg" alt="Hero" class="absolute inset-0 w-full h-full object-cover rounded-2xl ">
+           </div>
+          </div>
+        </div>
+      </div>
+    </section>
+       
+
+    <!-- Our Vision -->
+      <section id="vision" class="py-12 sm:py-16 bg-white" lang="ar" dir="rtl">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-blue mb-6">ننقلك من المعرفة الي التخطيط و التنفيذ</h3>
+            <p  class="mt-2 text-gray-600 text-md">
+              المنصة الأولى في الوطن العربي التي تختص باستكمال مهارات رواد البنية <br />التحتية والتقنية، ممن يسعون إلى الإسهام في رؤى المنطقة، والمشاركة في <br />المجال الأسرع نموًا بحلول  2027
+            </p>
+          </div>
+
+          <div class="py-16 grid sm:grid-cols-2 gap-8">
+            <div class="flex flex-row items-center gap-4 border border-slate-300 rounded-2xl p-4 w-1/2">
+              <div class="">
+                  <div class="flex flex-col border-l-4 border-brand-600 pl-4 text-center">
+                    <img src="./assets/message.svg" alt="message" style="width: 60px;"/>
+                    <span class="mt-2 text-2xl text-primary-blue">رسالتنا</span>
+                  </div>
+              </div>
+              <div class="border-r border-blue-700 px-2 " style="border-right: 2px solid #0071bc">
+                  تسريع دخول سوق العمل والتميز في هندسة مراكز البيانات في دول مجلس التعاون الخليجي من خلال توفير التدريب العملي، والاستشارات المتخصصة، وأفضل الممارسات المُثبتة في هذا المجال، بما يُحقق أثرًا مستدامًا
+              </div>
+            </div>
+            <div class="flex flex-row items-center gap-4 border border-slate-300 rounded-2xl p-4 w-1/2">
+              <div class="">
+                  <div class="flex flex-col border-l-4 border-brand-600 pl-4 text-center">
+                    <img src="./assets/arraw.svg" alt="message" style="width: 60px;"/>
+                    <span class="mt-2 text-2xl text-primary-blue">رؤيتنا</span>
+                  </div>
+              </div>
+              <div class="border-r border-blue-700 px-2 " style="border-right: 2px solid #0071bc">
+أن نصبح الأكاديمية الموثوقة في المنطقة، ومركزًا لخبرة البنية التحتية لمراكز البيانات، ونبضًا للتطوير المتكامل في منطقة الشرق الأوسط وشمال أفريقيا، حيث تلتقي المؤسسات والمتخصصون للتعلم والتطبيق والقيادة               </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+   
+      <!-- Our Trainer -->
+      <section id="trainer" class="py-12 sm:py-16 text-white" lang="ar" dir="rtl" style="background-color: #2e3192;">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-6">تعرف علي مدربينا</h3>
+          </div>
+          <div class="py-16 grid sm:grid-cols-2 gap-8">
+            <div class="flex flex-col items-center p-8 gap-4 text-slate-500 bg-white rounded-2xl">
+              <img class="rounded-full" src="./assets/alex-suprun-ZHvM3XIOHoE-unsplash.jpg" alt="trainer1" style="width: 160px;"/>
+              <span class="text-xl font-bold text-primary-blue">أحمد عبدالله</span>
+              <span class="text-md text-center text-gray-400 line-clamp-3" >
+                مختص في الحلول التقنية المتقدمة والاستشارات الهندسية، يمتلك خبرة عميقة في تطوير الأنظمة وإدارة المشاريع الكبرى
+              </span>
+              <div class="mt-2"></div>
+              <span class="text-xl font-bold text-primary-blue">قصص النجاح</span>
+              <span class="text-md text-center text-gray-400 line-clamp-3" >
+                مختص في الحلول التقنية المتقدمة والاستشارات الهندسية، يمتلك خبرة عميقة في تطوير الأنظمة وإدارة المشاريع الكبرى
+              </span>
+              <div class="mt-2 w-50">
+                <div class="flex justify-between gap-8 text-primary-blue">
+                  <div class="text-center">
+                    <span class="block text-blue-600 bold">15</span>
+                    <span>سنوات الخبرة</span>
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-blue-600 font-bold">15</span>
+                    <span>المشاريع المكتملة</span>
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-blue-600 font-bold">+200</span>
+                    <span>متدرب</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+             <div class="flex flex-col items-center p-8 gap-4 text-slate-500 bg-white rounded-2xl">
+              <img class="rounded-full" src="./assets/alex-suprun-ZHvM3XIOHoE-unsplash.jpg" alt="trainer1" style="width: 160px;"/>
+              <span class="text-xl font-bold text-primary-blue">أحمد عبدالله</span>
+              <span class="text-md text-center text-gray-400 line-clamp-3" >
+                مختص في الحلول التقنية المتقدمة والاستشارات الهندسية، يمتلك خبرة عميقة في تطوير الأنظمة وإدارة المشاريع الكبرى
+              </span>
+              <div class="mt-2"></div>
+              <span class="text-xl font-bold text-primary-blue">قصص النجاح</span>
+              <span class="text-md text-center text-gray-400 line-clamp-3" >
+                مختص في الحلول التقنية المتقدمة والاستشارات الهندسية، يمتلك خبرة عميقة في تطوير الأنظمة وإدارة المشاريع الكبرى
+              </span>
+              <div class="mt-2 w-50">
+                <div class="flex justify-between gap-8 text-primary-blue">
+                  <div class="text-center">
+                    <span class="block text-blue-600 bold">15</span>
+                    <span>سنوات الخبرة</span>
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-blue-600 font-bold">15</span>
+                    <span>المشاريع المكتملة</span>
+                  </div>
+                  <div class="text-center">
+                    <span class="block text-blue-600 font-bold">+200</span>
+                    <span>متدرب</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="py-12 sm:py-16 bg-slate-0" lang="ar" dir="rtl">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="text-right max-w-6xl ml-auto">
+           <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-blue mb-6">دوراتنا وخدماتنا التدريبية</h3>
+           <p class="mt-2 text-gray-600 text-sm">حلول تعليمية واستشارية متخصصة للمنشآت الحرجة، بتصميم عملي وتطبيق مباشر.</p>
+ 
+           <div class="services-accordion mt-8 space-y-3">
+             <!-- دورات تدريبية -->
+             <details>
+               <summary>
+                 <div class="flex items-center gap-3 justify-end">
+                  
+                   <span class="title">دورات تدريبية (متخصصة، مهارات تقنية، مهارات ناعمة)</span>
+                 </div>
+                 <i class="fi fi-rr-angle-down chevron w-5 h-5 text-gray-500"></i>
+               </summary>
+               <div class="content">
+                 <ul class="mt-3 space-y-2">
+                   <li class="flex items-start gap-2 justify-end"><span class="mt-1 w-1.5 h-1.5 bg-brand-600 rounded-full"></span><span>متخصصة: مختصي الهندسة الميكانيكية، الهندسة الكهربائية.</span></li>
+                   <li class="flex items-start gap-2 justify-end"><span class="mt-1 w-1.5 h-1.5 bg-brand-600 rounded-full"></span><span>مهارات تقنية: تفاصيل تقنية أكثر لعدد من المتطلبات.</span></li>
+                   <li class="flex items-start gap-2 justify-end"><span class="mt-1 w-1.5 h-1.5 bg-brand-600 rounded-full"></span><span>مهارات ناعمة: دورات متخصصة عن المهارات الناعمة الضرورية للمجال.</span></li>
+                 </ul>
+               </div>
+             </details>
+ 
+             <!-- ندوات تقنية -->
+             <details>
+               <summary>
+                 <div class="flex items-center gap-3 justify-end">
+             
+                   <span class="title">ندوات تقنية</span>
+                 </div>
+                 <i class="fi fi-rr-angle-down chevron w-5 h-5 text-gray-500"></i>
+               </summary>
+               <div class="content">
+                 <p>التركيز على أحد المنتجات التي تخص المنشآت الحرجة ومعرفة الجوانب المهمة: تصميم، تنفيذ، تشغيل، وصيانة.</p>
+               </div>
+             </details>
+ 
+             <!-- ورش عمل متخصصة -->
+             <details>
+               <summary>
+                 <div class="flex items-center gap-3 justify-end">
+             
+                   <span class="title">ورش عمل متخصصة</span>
+                 </div>
+                 <i class="fi fi-rr-angle-down chevron w-5 h-5 text-gray-500"></i>
+               </summary>
+               <div class="content">
+                 <p>تطبيق عملي على مشروع لحالة معينة، والخوض في تفاصيلها ومعرفة كيفية التعامل معها.</p>
+               </div>
+             </details>
+ 
+             <!-- استشارات مهنية وإرشادية -->
+             <details>
+               <summary>
+                 <div class="flex items-center gap-3 justify-end">
+
+                   <span class="title">استشارات مهنية وإرشادية</span>
+                 </div>
+                 <i class="fi fi-rr-angle-down chevron w-5 h-5 text-gray-500"></i>
+               </summary>
+               <div class="content">
+                 <p>مساعدة الممارسين في تسريع التعلم والتركيز لتحسين الممارسات وزيادة فعاليتها.</p>
+               </div>
+             </details>
+           </div>
+         </div>
+       </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="py-12 sm:py-16 bg-slate-50" lang="ar" dir="rtl">
+       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+         <div class="text-right max-w-6xl ml-auto">
+           <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-blue mb-6">مشاريعنا الهندسية ومواردنا العلمية</h3>
+           <p class="mt-2 text-gray-600 text-sm">نشارككم في كل خطوة ذخيرتنا من القيادة والتخطيط في
+                المنطقة لأبرز المشاريع الخاصة والحكومية، ونهجنا الهندسي
+                الذي يمكّن كل متدرب بشكل تطويري مستدام</p>
+ 
+            <div class="services-accordion mt-8 space-y-3">
+                <div class="swiper mySwiper" style="height: 280px;">
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="relative" style="height: 280px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,0.10);">
+                <img src="assets/courses.jpg" alt="خلفية الخدمة" style="width: 100%; height: 100%; object-fit: cover;">
+                <!-- Gradient overlay: top to bottom and fades out at bottom -->
+                <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(46,49,146,0.70) 0%, rgba(46,49,146,0.50) 40%, rgba(0,0,0,0.00) 100%);"></div>
+
+                <!-- Bottom content: text on one side, circle left arrow on other side -->
+                <div style="position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px;">
+                    <div class="flex flex-col ">
+                        <div style="color: #fff; font-size: 1rem; font-weight: 800; text-align: start;" class="font-bolder">المعاير <br /> العلمية</div>
+                        <div style="color: #fff; font-size: 1rem; font-weight: 800; text-align: start;" class="font-bolder">NICDC, PIFDC <br /> & GACA</div>
+                    </div>
+                        <a href="#" aria-label="عرض المزيد" style="width: 44px; height: 44px; border-radius: 9999px; border: 2px solid #ffffff; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.12); backdrop-filter: blur(2px); align-self: end;">
+                          <i class="fi fi-rr-arrow-left" style="color:#fff; font-size:20px; margin-top:5px;"></i>
+                        </a>
+                        </div>
+                      </div>
+                    </div>
+                        <div class="swiper-slide">
+                        <div class="relative" style="height: 280px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,0.10);">
+                <img src="assets/courses.jpg" alt="خلفية الخدمة" style="width: 100%; height: 100%; object-fit: cover;">
+                <!-- Gradient overlay: top to bottom and fades out at bottom -->
+                <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(46,49,146,0.70) 0%, rgba(46,49,146,0.50) 40%, rgba(0,0,0,0.00) 100%);"></div>
+
+                <!-- Bottom content: text on one side, circle left arrow on other side -->
+                <div style="position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px;">
+                    <div class="flex flex-col ">
+                        <div style="color: #fff; font-size: 1rem; font-weight: 800; text-align: start;" class="font-bolder">مشاريعنا <br /> الهندسية</div>
+                        <div style="color: #fff; font-size: 1rem; font-weight: 800; text-align: start;" class="font-bolder">NICDC, PIFDC <br /> & GACA</div>
+                    </div>
+                        <a href="#" aria-label="عرض المزيد" style="width: 44px; height: 44px; border-radius: 9999px; border: 2px solid #ffffff; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.12); backdrop-filter: blur(2px); align-self: end;">
+                          <i class="fi fi-rr-arrow-left" style="color:#fff; font-size:20px; margin-top:5px;"></i>
+                        </a>
+                        </div>
+                      </div>
+                    </div>
+                                        <div class="swiper-slide">
+                        <div class="relative" style="height: 280px; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 24px rgba(0,0,0,0.10);">
+                <img src="assets/courses.jpg" alt="خلفية الخدمة" style="width: 100%; height: 100%; object-fit: cover;">
+                <!-- Gradient overlay: top to bottom and fades out at bottom -->
+                <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(46,49,146,0.70) 0%, rgba(46,49,146,0.50) 40%, rgba(0,0,0,0.00) 100%);"></div>
+
+                <!-- Bottom content: text on one side, circle left arrow on other side -->
+                <div style="position: absolute; left: 0; right: 0; bottom: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px;">
+                    <div class="flex flex-col ">
+                        <div style="color: #fff; font-size: 1rem; font-weight: 800; text-align: start;" class="font-bolder">الموارد <br /> العلمية الاساسية</div>
+                        <div style="color: #fff; font-size: 1rem; font-weight: 800; text-align: start;" class="font-bolder">NICDC, PIFDC <br /> & GACA</div>
+                    </div>
+                        <a href="#" aria-label="عرض المزيد" style="width: 44px; height: 44px; border-radius: 9999px; border: 2px solid #ffffff; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.12); backdrop-filter: blur(2px); align-self: end;">
+                          <i class="fi fi-rr-arrow-left" style="color:#fff; font-size:20px; margin-top:5px;"></i>
+                        </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-pagination"></div>
+                </div>
+
+           </div>
+         </div>
+       </div>
+      </section>
+
+    <!-- Contact Us -->
+    <section id="contact" class="py-12 sm:py-16 bg-white" lang="ar" dir="rtl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 gap-8 items-start">
+          <!-- Contact Info -->
+          <div class="text-right">
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-blue mb-6">اتصل بنا</h3>
+            <p class="mt-2 text-gray-600 text-sm">نحن نحب أن نسمع منك. أرسل رسالة وسنعود إليك قريباً.</p>
+            <div class="mt-6 space-y-3 text-sm text-gray-700">
+              <div class="flex items-center gap-3 justify-end">
+                <span>أكاديمية EradcHub</span>
+                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary-blue text-white font-bold">EH</span>
+              </div>
+              <div class="flex items-center gap-3 justify-end">
+                <a href="mailto:info@example.com" class="hover:text-cyan-accent">info@example.com</a>
+                <i class="fi fi-rr-envelope w-5 h-5 text-gray-500"></i>
+              </div>
+              <div class="flex items-center gap-3 justify-end">
+                <span>الرياض، المملكة العربية السعودية</span>
+                <i class="fi fi-rr-folder w-5 h-5 text-gray-500"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Form -->
+          <form class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card" action="#" method="post">
+            <div class="grid gap-4">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700">الاسم</label>
+                <input id="name" name="name" type="text" required class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="اسمك" />
+              </div>
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">البريد الإلكتروني</label>
+                <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="you@example.com" />
+              </div>
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700">الرسالة</label>
+                <textarea id="message" name="message" rows="4" required class="mt-1 block w-full rounded-lg border border-slate-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-brand-600" placeholder="كيف يمكننا مساعدتك؟"></textarea>
+              </div>
+            </div>
+            <div class="mt-4 flex items-center justify-between">
+              <a href="tel:+966000000000" class="inline-flex items-center px-4 py-2 rounded-xl border border-slate-300 text-gray-900 font-semibold hover:bg-slate-50">اتصل بنا</a>
+              <button type="submit" class="inline-flex items-center px-5 py-3 rounded-xl bg-brand-600 text-white font-semibold shadow-glow hover:bg-brand-700">
+                <i class="fi fi-rr-arrow-left mr-2 w-4 h-4"></i>
+                إرسال الرسالة
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white" dir="rtl" lang="ar">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid md:grid-cols-4 gap-8">
+          <!-- Brand -->
+          <div class="md:col-span-1">
+            <div class="flex items-center gap-2 mb-4 justify-start">
+              <span class="font-bold text-xl">أكاديمية EradcHub</span>
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-brand-600 text-white font-bold text-lg">EH</span>
+            </div>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              تمكين المهنيين بشهادات إدارة المشاريع المعترف بها عالمياً والتدريب المتخصص.
+            </p>
+            <div class="flex items-center gap-4">
+              <a href="#" aria-label="Twitter" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="LinkedIn" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-14h4v2a4 4 0 014-2z"/>
+                  <circle cx="4" cy="4" r="2"/>
+                  <path d="M2 8h4v14H2z"/>
+                </svg>
+              </a>
+              <a href="#" aria-label="Facebook" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h5 class="font-semibold text-lg mb-4">روابط سريعة</h5>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">من نحن</a></li>
+              <li><a href="#courses" class="text-gray-400 hover:text-white transition-colors">الدورات</a></li>
+              <li><a href="#testimonials" class="text-gray-400 hover:text-white transition-colors">آراء العملاء</a></li>
+              <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">اتصل بنا</a></li>
+              <li><a href="course.html" class="text-gray-400 hover:text-white transition-colors">تفاصيل الدورة</a></li>
+            </ul>
+          </div>
+
+          <!-- Certifications -->
+          <div>
+            <h5 class="font-semibold text-lg mb-4">الشهادات</h5>
+            <ul class="space-y-2 text-sm">
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">شهادة PMP</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">شهادة CAPM</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">PMI-ACP (أجايل)</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">PRINCE2</a></li>
+              <li><a href="#" class="text-gray-400 hover:text-white transition-colors">سكرم ماستر</a></li>
+            </ul>
+          </div>
+
+          <!-- Contact Info -->
+          <div>
+            <h5 class="font-semibold text-lg mb-4">معلومات التواصل</h5>
+            <div class="space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+                </svg>
+                <div>
+                  <p class="text-gray-400">support@eradchub.com</p>
+                  <p class="text-gray-400">admissions@eradchub.com</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                </svg>
+                <div>
+                  <p class="text-gray-400">+966 50 123 4567</p>
+                  <p class="text-gray-400 text-xs">الأحد-الخميس: 9ص-6م</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start gap-3">
+                <svg class="w-4 h-4 text-brand-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+</svg>
+                <div>
+                  <p class="text-gray-400">شارع الأعمال 123</p>
+                  <p class="text-gray-400">مكتب 100، الرياض، المملكة العربية السعودية</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col sm:flex-row justify-between items-center">
+          <div class="text-sm text-gray-400">
+            © <span id="year"></span> أكاديمية EradcHub. جميع الحقوق محفوظة.
+          </div>
+          <div class="flex items-center gap-6 mt-4 sm:mt-0 text-sm">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">سياسة الخصوصية</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">شروط الخدمة</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/main.js"></script>
+      <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 1,
+      spaceBetween: 30,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      breakpoints: {
+        640: { slidesPerView: 2, spaceBetween: 24 },
+        1024: { slidesPerView: 3, spaceBetween: 24 }
+      }
+    });
+  </script>
+  </body>
+</html>
