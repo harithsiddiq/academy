@@ -6,9 +6,17 @@
     <title>Register – EradcHub</title>
     <link rel="stylesheet" href="assets/styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    
+    <style>
+      /* Toggle (segmented) control for level selection */
+      .level-toggle { display: flex; gap: 0.5rem; }
+      .level-toggle .option { position: relative; display: inline-flex; align-items: center; padding: 0.5rem 0.75rem; border-radius: 0.5rem; border: 1px solid #2e3192; color: #2e3192; background: #ffffff; font-weight: 600; cursor: pointer; }
+      .level-toggle .option input { position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+      .level-toggle .option:has(input:checked) { background: #2e3192; color: #ffffff; }
+      @media (prefers-reduced-motion: reduce) { .level-toggle .option { transition: none; } }
+    </style>
+  
   </head>
-  <body class="bg-gradient-to-b from-primary-blue/5 to-white text-neutral-dark antialiased overflow-x-hidden">
+  <body class="bg-gradient-to-br from-white to-primary-blue text-neutral-dark antialiased overflow-x-hidden min-h-screen" style="background-image: linear-gradient(to bottom right, #ffffff 0%, #f3f8ff 40%, #93c5fd 100%); min-height: 100vh; display: flex; flex-direction: column;">
     <header class="border-b border-slate-100 bg-white/80 backdrop-blur sticky top-0 z-40">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <a href="index.html" class="flex items-center gap-2">
@@ -19,51 +27,64 @@
       </div>
     </header>
 
-    <main class="py-10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-start">
-        <div class="hidden lg:block">
-          <h1 class="text-3xl font-extrabold">Create your account</h1>
-          <p class="mt-2 text-gray-600">Access live classes, recordings, exam prep kits, and mentorship.</p>
-          <div class="mt-8 relative h-48 rounded-2xl bg-primary-blue/15">
-            <div class="absolute -left-10 top-6 w-48 h-48 rounded-full bg-primary-blue/25 blur-[80px]"></div>
-            <div class="absolute right-6 bottom-0 w-40 h-40 rounded-full bg-primary-blue/20 blur-[70px]"></div>
+    <main class="py-10 flex-1" style="display:flex; align-items:center; justify-content:center;">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 items-center">
+        <div class="lg:block">
+          <img src="./assets/logo.svg" alt="" width="300" class="block mx-auto lg:mx-0">
+          <div class="flex gap-4 mt-2 items-center">
+              <h1 class="text-xl font-extrabold w-50 text-secondary-blue flex-1" style="width: 300px;">
+                مرحبا بك! نسعد هل لديك حساب بالفعل؟
+                بانضمامك على منصتنا
+                الأولى في الوطن العرب
+              </h1>
+            <!-- Vertical divider on desktop -->
+            <div class="hidden md:block w-px bg-slate-200 self-stretch"></div>
+            <div class="flex-1">
+              <span>did you have an account ?</span>
+              <br />
+              <a href="#" class="bg-primary-blue text-white px-4 py-2 mt-2 block text-center rounded-lg" style="background-color: #2e3192;">Sign in <i class="fi fi-rr-arrow-right"></i></a>
+            </div>
           </div>
+          <!-- Horizontal divider on mobile -->
+          <hr class="md:hidden border-slate-200 my-4" />
         </div>
 
         <div class="lg:col-span-1">
-          <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-card">
+          <div class="rounded-2xl p-6 ">
             <h2 class="text-xl font-bold">Register</h2>
             <form class="mt-4 space-y-4" action="#" onsubmit="return false;">
               <div>
                 <label class="block text-sm font-medium text-slate-700">Full name</label>
-                <input type="text" placeholder="Jane Doe" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-primary-blue focus:border-primary-blue" required />
+                <input style="border: 1px solid #2e3192;" type="text" placeholder="Jane Doe" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-primary-blue focus:border-primary-blue" required />
               </div>
               <div>
                 <label class="block text-sm font-medium text-slate-700">Email</label>
-                <input type="email" placeholder="you@example.com" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-primary-blue focus:border-primary-blue" required />
+                <input style="border: 1px solid #2e3192;" type="email" placeholder="you@example.com" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-primary-blue focus:border-primary-blue" required />
               </div>
               <div>
                 <label class="block text-sm font-medium text-slate-700">Password</label>
-                <input type="password" placeholder="••••••••" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-primary-blue focus:border-primary-blue" required />
+                <input style="border: 1px solid #2e3192;" type="password" placeholder="••••••••" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-primary-blue focus:border-primary-blue" required />
               </div>
               <div>
                 <label class="block text-sm font-medium text-slate-700">Confirm password</label>
-                <input type="password" placeholder="••••••••" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-primary-blue focus:border-primary-blue" required />
+                <input style="border: 1px solid #2e3192;" type="password" placeholder="••••••••" class="mt-1 w-full rounded-lg border border-slate-300 px-3 py-2 focus:ring-primary-blue focus:border-primary-blue" required />
               </div>
-              <label class="inline-flex items-center gap-2 text-sm"><input type="checkbox" class="rounded border-slate-300" required> I agree to the <a href="#" class="text-cyan-accent">terms</a></label>
-              <button class="w-full inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-blue text-white font-semibold hover:opacity-90">Create Account</button>
+              <!-- Level selection toggle -->
+              <div class="level-toggle mb-2 flex justify-center" dir="rtl" lang="ar">
+                <label class="option"><input type="radio" name="level" value="fresh" checked> حديث التخرج</label>
+                <label class="option"><input type="radio" name="level" value="mid"> متوسط الخبرة</label>
+                <label class="option"><input type="radio" name="level" value="consultant"> استشاري</label>
+              </div>
+              <!-- Agreement and submit on the same line -->
+              <div class="flex items-center justify-between gap-3">
+                <label class="inline-flex items-center gap-2 text-sm"><input type="checkbox" class="rounded border-slate-300" required> I agree to the <a href="#" class="text-cyan-accent">terms</a></label>
+                <button class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary-blue text-white font-semibold hover:opacity-90"  style="background-color: #2e3192;">Create Account</button>
+              </div>
             </form>
-            <p class="mt-4 text-sm text-gray-600">Already have an account? <a href="login.html" class="text-cyan-accent">Login</a></p>
           </div>
         </div>
       </div>
     </main>
-
-    <footer class="border-t border-slate-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-sm text-gray-600">
-        <a href="index.html" class="text-cyan-accent">← Back to Home</a>
-      </div>
-  </footer>
   <script src="assets/main.js"></script>
   </body>
   </html>

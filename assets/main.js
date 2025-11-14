@@ -1,9 +1,29 @@
-// Mobile menu toggle
+// Mobile menu toggle (slide-in from right)
 const mobileToggle = document.getElementById('mobileMenuToggle');
 const mobileMenu = document.getElementById('mobileMenu');
+const headerEl = document.querySelector('header');
+
+// Update CSS var for header height so menu fills viewport below it
+function updateHeaderHeight() {
+  if (!headerEl) return;
+  const h = headerEl.offsetHeight;
+  document.documentElement.style.setProperty('--header-h', h + 'px');
+}
+updateHeaderHeight();
+window.addEventListener('resize', updateHeaderHeight);
+
 if (mobileToggle && mobileMenu) {
   mobileToggle.addEventListener('click', () => {
-    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('is-open');
+    // Lock page scroll when menu open
+    document.body.classList.toggle('overflow-hidden', mobileMenu.classList.contains('is-open'));
+  });
+  // Close menu when clicking a link
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      mobileMenu.classList.remove('is-open');
+      document.body.classList.remove('overflow-hidden');
+    });
   });
 }
 
