@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-rounded/css/uicons-regular-rounded.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-bold-rounded/css/uicons-bold-rounded.css">
     <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css">
+    <link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.6.0/uicons-brands/css/uicons-brands.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
     <style>
@@ -112,8 +113,8 @@
        #courses .course-tile img { display:block; }
        @media (prefers-reduced-motion: reduce) { #courses .course-tile img { transition: none; } }
 
-           .swiper {
-      width: 100%;
+    .swiper {
+      width: 70vw;
       height: 100%;
     }
 
@@ -162,7 +163,7 @@
         left: 0;
         bottom: 0;
         height: calc(100vh - var(--header-h));
-        background: #2e3192; /* dark blue background */
+        background: #2e3192; /* solid dark blue background */
         z-index: 60; /* above page content */
         overflow-y: auto;
         opacity: 0;
@@ -176,11 +177,12 @@
         opacity: 1;
         visibility: visible;
         pointer-events: auto;
+        width: calc(90vw)
       }
       /* Constrain content width so menu is not full-screen width */
       #mobileMenu .menu-content {
         max-width: 640px;
-        margin-inline: auto;
+        margin-inline: 1rem;
       }
       #mobileMenu .menu-content { padding: 1rem; }
       #mobileMenu a {
@@ -205,7 +207,7 @@
       #logo-marquee .logo-swiper .swiper-slide { width: auto; }
       #logo-marquee .logo-swiper img {
         display: block;
-        width: 100px;
+        width: 180px;
         height: auto;
       }
 
@@ -225,6 +227,54 @@
         padding-bottom: 0;
       }
 
+      /* Infra Projects: grid of logos (5 per row) */
+      #infra-projects .logo-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 1rem;
+        align-items: center;
+      }
+      #infra-projects .logo-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+        border: 1px solid #e2e8f0; /* slate-200 */
+        border-radius: 0.75rem; /* rounded-xl */
+        background: #ffffff;
+      }
+      #infra-projects .logo-item img {
+        width: 100px;
+        height: auto;
+        display: block;
+      }
+      @media (max-width: 640px) {
+        #infra-projects .logo-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+      
+      /* Mobile menu overlay: full-screen with internal header */
+      :root { --header-h: 64px; }
+      header { position: relative; }
+      #mobileMenu { position: fixed; top: 0; right: 0; left: 0; bottom: 0; height: 100vh; background: #2e3192; z-index: 60; opacity: 0; visibility: hidden; pointer-events: none; transform: translateY(-10px); transition: transform 200ms ease, opacity 200ms ease; display: flex; flex-direction: column; overflow-y: hidden; }
+      #mobileMenu.is-open { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: auto; width: calc(85vw); }
+      #mobileMenu .menu-header { display: flex; align-items: center; justify-content: space-between; padding: 1rem; color: #fff; }
+      #mobileMenu .menu-header #mobileMenuClose { width: 48px; height: 48px; border: 1.5px solid rgba(255,255,255,0.85); border-radius: 8px; display: inline-flex; align-items: center; justify-content: center; }
+      #mobileMenu .menu-header #mobileMenuClose i { font-size: 20px; }
+      #mobileMenu .menu-content { max-width: 640px; margin-inline: 1rem; padding: 1rem; flex: 1; overflow-y: auto; }
+      #mobileMenu a { display: block; padding: 0.75rem 1rem; margin-block: 0.25rem; background: #ffffff; color: #2e3192; border-radius: 0.75rem; font-weight: 600; }
+      #mobileMenu a:hover { opacity: 0.9; }
+      #mobileMenu .menu-footer { max-width: 640px; margin-inline: auto; padding: 1rem;  }
+      #mobileMenu .menu-footer .social { display: flex; align-items: center; justify-content: center; gap: 0.75rem; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 1rem }
+      #mobileMenu .menu-footer .social a { width: 40px; height: 40px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.7); border-radius: 9999px; color: #ffffff; }
+      #mobileMenu .menu-footer .social a { background: rgba(255,255,255,0.1); }
+      #mobileMenu .menu-footer .copy { margin-top: 0.5rem; text-align: center; color: rgba(255,255,255,0.9); font-size: 0.85rem; }
+       #mobileMenu .menu-footer .social a i {
+          margin-top: 4px
+       }
+      #mobileMenu .menu-footer .login-btn { text-align: center; margin-bottom: 0.75rem; }
+    
     </style>
   </head>
   <body class="bg-white text-neutral-dark antialiased overflow-x-hidden min-h-screen">
@@ -233,17 +283,18 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
           <a href="#" class="flex items-center gap-2">
-            <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary-blue text-white font-bold">EH</span>
-            <span class="font-semibold text-lg">EradcHub</span>
+            <span class="font-semibold text-lg">
+              <img src="./assets/logo.svg" width="100" />
+            </span>
           </a>
           <nav class="hidden md:flex items-center gap-8 text-sm" lang="ar" dir="rtl">
             <a href="#home" class="hover:text-cyan-accent">الرئيسية</a>
-            <a href="#vision" class="hover:text-cyan-accent">من نحن</a>
-            <a href="#trainer" class="hover:text-cyan-accent">تدريباتنا</a>
-            <a href="#services" class="hover:text-cyan-accent">خدماتنا</a>
-            <a href="#projects" class="hover:text-cyan-accent">قصص النجاح</a>
-            <a href="#projects" class="hover:text-cyan-accent">مقالات</a>
-            <a href="#contact" class="hover:text-cyan-accent">اتصل بنا</a>
+            <a href="#vision" class="hover:text-cyan-accent">الرؤية والرسالة</a>
+            <a href="#trainer" class="hover:text-cyan-accent">المدربين</a>
+            <a href="course.html" class="hover:text-cyan-accent">الدورات التدريبية</a>
+            <a href="#infra-projects" class="hover:text-cyan-accent">مشاريع البنى التحتية</a>
+            <a href="post.html" class="hover:text-cyan-accent">المقالات</a>
+            <a href="#contact" class="hover:text-cyan-accent">تواصل معنا</a>
           </nav>
           <div class="flex items-center gap-3">
             <a href="#contact" class="hidden sm:inline-flex items-center px-4 py-2 rounded-lg bg-primary-blue text-white font-semibold shadow-glow hover:opacity-90 transition">Get Free Session</a>
@@ -255,14 +306,80 @@
       </div>
       <!-- Mobile menu -->
       <div id="mobileMenu" class="md:hidden" lang="ar" dir="rtl">
+        <div class="menu-header">
+          <img src="assets/logo-white.svg" alt="EradcHub" class="h-8 w-auto" />
+          <button id="mobileMenuClose" class="inline-flex items-center justify-center w-12 h-12 rounded-lg text-white hover:text-white/80" aria-label="Close menu">
+            <i class="fi fi-rr-cross-small w-6 h-6"></i>
+          </button>
+        </div>
         <div class="menu-content px-4 py-3 space-y-2">
-          <a href="#home">الرئيسية</a>
-          <a href="#vision">من نحن</a>
-          <a href="#trainer">تدريباتنا</a>
-          <a href="#services">خدماتنا</a>
-          <a href="#projects">قصص النجاح</a>
-          <a href="#projects">مقالات</a>
-          <a href="#contact">اتصل بنا</a>
+          <a href="#home">
+            <div class="flex items-center justify-between">
+              <span>الرئيسية</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M9.47 4.47a.75.75 0 0 1 1.06 0l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 1 1-1.06-1.06L15.94 12 9.47 5.53a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </a>
+          <a href="#vision">
+            <div class="flex items-center justify-between">
+              <span>الرؤية والرسالة</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M9.47 4.47a.75.75 0 0 1 1.06 0l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 1 1-1.06-1.06L15.94 12 9.47 5.53a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </a>
+          <a href="#trainer">
+            <div class="flex items-center justify-between">
+              <span>المدربين</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M9.47 4.47a.75.75 0 0 1 1.06 0l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 1 1-1.06-1.06L15.94 12 9.47 5.53a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </a>
+          <a href="course.html">
+            <div class="flex items-center justify-between">
+              <span>الدورات التدريبية</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M9.47 4.47a.75.75 0 0 1 1.06 0l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 1 1-1.06-1.06L15.94 12 9.47 5.53a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </a>
+          <a href="#infra-projects">
+            <div class="flex items-center justify-between">
+              <span>مشاريع البنى التحتية</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M9.47 4.47a.75.75 0 0 1 1.06 0l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 1 1-1.06-1.06L15.94 12 9.47 5.53a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </a>
+          <a href="post.html">
+            <div class="flex items-center justify-between">
+              <span>المقالات</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M9.47 4.47a.75.75 0 0 1 1.06 0l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 1 1-1.06-1.06L15.94 12 9.47 5.53a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </a>
+          <a href="#contact">
+            <div class="flex items-center justify-between">
+              <span>تواصل معنا</span>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                <path d="M9.47 4.47a.75.75 0 0 1 1.06 0l7 7a.75.75 0 0 1 0 1.06l-7 7a.75.75 0 1 1-1.06-1.06L15.94 12 9.47 5.53a.75.75 0 0 1 0-1.06Z" />
+              </svg>
+            </div>
+          </a>
+        </div>
+        <div class="menu-footer">
+          <a href="login.html" class="login-btn" aria-label="Login">تسجيل الدخول</a>
+          <div class="social">
+            <a href="#" aria-label="Facebook"><i class="fi fi-brands-facebook"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fi fi-brands-twitter-alt"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fi fi-brands-instagram"></i></a>
+            <a href="#" aria-label="LinkedIn"><i class="fi fi-brands-linkedin"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fi fi-brands-tik-tok"></i></a>
+          </div>
+          <div class="copy"> منصة مركز البيانات العصري| EradcHub 2025©</div>
         </div>
       </div>
     </header>
@@ -344,6 +461,25 @@
 
         </div>
       </section>
+
+          <!-- logo marquee -->
+    <section id="logo-marquee" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto  sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-blue mb-6">المواد العلمية الاساسية</h3>
+          </div>
+          <div class="logo-swiper swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide"><img src="./assets/logo.svg" alt="logo1" /></div>
+              <div class="swiper-slide"><img src="./assets/logo.svg" alt="logo2" /></div>
+              <div class="swiper-slide"><img src="./assets/logo.svg" alt="logo3" /></div>
+              <div class="swiper-slide"><img src="./assets/logo.svg" alt="logo4" /></div>
+              <div class="swiper-slide"><img src="./assets/logo.svg" alt="logo5" /></div>
+      
+            </div>
+          </div>
+        </div>
+    </section>
    
       <!-- Our Trainer -->
       <section id="trainer" class="py-12 sm:py-16 text-white" lang="ar" dir="rtl" style="background-color: #2e3192;">
@@ -359,10 +495,7 @@
                 مختص في الحلول التقنية المتقدمة والاستشارات الهندسية، يمتلك خبرة عميقة في تطوير الأنظمة وإدارة المشاريع الكبرى
               </span>
               <div class="mt-2"></div>
-              <span class="text-xl font-bold text-primary-blue">قصص النجاح</span>
-              <span class="text-md text-center text-gray-400 line-clamp-3" >
-                مختص في الحلول التقنية المتقدمة والاستشارات الهندسية، يمتلك خبرة عميقة في تطوير الأنظمة وإدارة المشاريع الكبرى
-              </span>
+     
               <div class="mt-2 w-50">
                 <div class="flex justify-between gap-8 text-primary-blue">
                   <div class="text-center">
@@ -378,6 +511,14 @@
                     <span>متدرب</span>
                   </div>
                 </div>
+              </div>
+              <div class="mt-4 justify-center flex">
+                  <span class="inline-flex items-center justify-center gap-3 text-blue-600 font-semibold">
+                    <span>عرض المزيد</span>
+                      <a href="#" aria-label="عرض المزيد" style="width: 44px; height: 44px; border-radius: 9999px; border: 1px solid #2e3192; display: inline-flex; align-items: center; justify-content: center;  backdrop-filter: blur(2px); align-self: end;">
+                      <i class="fi fi-rr-arrow-left" style="color:#2e3192; font-size:20px; margin-top:5px;"></i>
+                    </a>
+                  </span>
               </div>
             </div>
              <div class="flex flex-col items-center p-8 gap-4 text-slate-500 bg-white rounded-2xl">
@@ -387,10 +528,6 @@
                 مختص في الحلول التقنية المتقدمة والاستشارات الهندسية، يمتلك خبرة عميقة في تطوير الأنظمة وإدارة المشاريع الكبرى
               </span>
               <div class="mt-2"></div>
-              <span class="text-xl font-bold text-primary-blue">قصص النجاح</span>
-              <span class="text-md text-center text-gray-400 line-clamp-3" >
-                مختص في الحلول التقنية المتقدمة والاستشارات الهندسية، يمتلك خبرة عميقة في تطوير الأنظمة وإدارة المشاريع الكبرى
-              </span>
               <div class="mt-2 w-50">
                 <div class="flex justify-between gap-8 text-primary-blue">
                   <div class="text-center">
@@ -407,13 +544,21 @@
                   </div>
                 </div>
               </div>
+              <div class="mt-4 justify-center flex">
+                <span class="inline-flex items-center justify-center gap-3 text-blue-600 font-semibold">
+                  <span>عرض المزيد</span>
+                    <a href="#" aria-label="عرض المزيد" style="width: 44px; height: 44px; border-radius: 9999px; border: 1px solid #2e3192; display: inline-flex; align-items: center; justify-content: center;  backdrop-filter: blur(2px); align-self: end;">
+                    <i class="fi fi-rr-arrow-left" style="color:#2e3192; font-size:20px; margin-top:5px;"></i>
+                  </a>
+                </span>
+              </div>
             </div>
            
           </div>
         </div>
       </section>
 
-          <!-- logo marquee -->
+    <!-- logo marquee -->
     <section id="logo-marquee" class="py-16 bg-slate-50">
         <div class="max-w-7xl mx-auto  sm:px-6 lg:px-8">
           <div class="text-center">
@@ -527,7 +672,7 @@
                 الذي يمكّن كل متدرب بشكل تطويري مستدام</p>
  
             <div class="services-accordion mt-8 space-y-3">
-                <div class="swiper mySwiper" style="height: 280px;">
+                <div class="swiper mySwiper" style="height: 280px; width: 100% !important">
                   <div class="swiper-wrapper">
                     <div class="swiper-slide">
                         <div class="relative" style="height: 280px; border-radius: 16px; overflow: hidden; box-shadow: none;">
@@ -588,12 +733,33 @@
                 </div>
 
            </div>
-         </div>
-       </div>
+      </div>
+      </div>
       </section>
 
+    <!-- Infra Projects (ابرز مشاريعنا للبنية التحتية) -->
+    <section id="infra-projects" class="py-12 sm:py-16 bg-white" lang="ar" dir="rtl">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-right max-w-6xl ml-auto">
+          <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-blue mb-6">ابرز مشاريعنا للبنية التحتية</h3>
+          <div class="logo-grid">
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 1"></div>
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 2"></div>
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 3"></div>
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 4"></div>
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 5"></div>
+                 <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 1"></div>
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 2"></div>
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 3"></div>
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 4"></div>
+            <div class="logo-item"><img src="./assets/logo.svg" alt="شريك 5"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- Levels -->
-      <section id="levels" class="py-12 sm:py-16 bg-slate-0" lang="ar" dir="rtl">
+      <section id="levels" class="py-12 hidden sm:py-16 bg-slate-0" lang="ar" dir="rtl">
        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
          <div class="text-right max-w-6xl ml-auto">
            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-blue mb-6">المستويات</h3> 
@@ -618,7 +784,7 @@
                </div>
              </details>
 
-                        <!-- دورات تدريبية -->
+            <!-- دورات تدريبية -->
              <details >
                <summary>
                  <div class="flex items-center gap-3 justify-end">
@@ -683,6 +849,19 @@
        </div>
       </section>
 
+          <section id="logo-marquee" class="py-16 bg-slate-50">
+        <div class="max-w-7xl mx-auto  sm:px-6 lg:px-8">
+          <div class="text-center">
+            <h3 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-primary-blue mb-6">شريكنا الاستراتيجي</h3>
+          </div>
+          <div class="flex justify-center">
+              <div class=""><img src="./assets/logo.svg" alt="logo1" width="200" /></div>
+          </div>
+        </div>
+    </section>
+
+
+
     <!-- Contact Us -->
     <section id="contact" class="py-12 sm:py-16 bg-white" lang="ar" dir="rtl">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -694,7 +873,7 @@
             <div class="mt-6 space-y-3 text-sm text-gray-700">
               <div class="flex items-center gap-3 justify-end">
                 <span>أكاديمية EradcHub</span>
-                <span class="inline-flex items-center justify-center w-9 h-9 rounded-lg bg-primary-blue text-white font-bold">EH</span>
+                <img class="hidden" src="./assets/logo.svg" alt="logo" width="100" />
               </div>
               <div class="flex items-center gap-3 justify-end">
                 <a href="mailto:info@example.com" class="hover:text-cyan-accent">info@example.com</a>
@@ -750,21 +929,16 @@
             </p>
             <div class="flex items-center gap-4">
               <a href="#" aria-label="Twitter" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M23 3a10.9 10.9 0 01-3.14 1.53A4.48 4.48 0 0012 7v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
-                </svg>
+                <i class="fi fi-brands-twitter-alt"></i>
               </a>
               <a href="#" aria-label="LinkedIn" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-14h4v2a4 4 0 014-2z"/>
-                  <circle cx="4" cy="4" r="2"/>
-                  <path d="M2 8h4v14H2z"/>
-                </svg>
+                <i class="fi fi-brands-linkedin"></i>
+              </a>
+              <a href="#" aria-label="TikTok" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
+                <i class="fi fi-brands-tik-tok"></i>
               </a>
               <a href="#" aria-label="Facebook" class="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-brand-600 transition-colors">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                </svg>
+                <i class="fi fi-brands-facebook"></i>
               </a>
             </div>
           </div>

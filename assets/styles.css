@@ -1767,6 +1767,17 @@ html {
   font-family: 'Readex Pro', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* Language-based direction and alignment */
+html:lang(ar), body:lang(ar) { direction: rtl; }
+html:lang(en), body:lang(en) { direction: ltr; }
+
+[lang="ar"] { direction: rtl; text-align: right; }
+[lang="en"] { direction: ltr; text-align: left; }
+
+/* Prose alignment following language */
+[lang="ar"] .prose { text-align: right; }
+[lang="en"] .prose { text-align: left; }
+
 /* Minimal RTL overrides for existing directional utilities */
 
 .hover\:border-slate-200:hover {

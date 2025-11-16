@@ -18,6 +18,13 @@ if (mobileToggle && mobileMenu) {
     // Lock page scroll when menu open
     document.body.classList.toggle('overflow-hidden', mobileMenu.classList.contains('is-open'));
   });
+  const mobileClose = document.getElementById('mobileMenuClose');
+  if (mobileClose) {
+    mobileClose.addEventListener('click', () => {
+      mobileMenu.classList.remove('is-open');
+      document.body.classList.remove('overflow-hidden');
+    });
+  }
   // Close menu when clicking a link
   mobileMenu.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => {
@@ -25,6 +32,19 @@ if (mobileToggle && mobileMenu) {
       document.body.classList.remove('overflow-hidden');
     });
   });
+
+  // Auto-close mobile menu when leaving mobile viewport (>= md breakpoint)
+  const MD_BREAKPOINT = 768; // Tailwind's default md breakpoint
+  const autoCloseOnResize = () => {
+    if (window.innerWidth >= MD_BREAKPOINT && mobileMenu.classList.contains('is-open')) {
+      mobileMenu.classList.remove('is-open');
+      document.body.classList.remove('overflow-hidden');
+    }
+  };
+  window.addEventListener('resize', autoCloseOnResize);
+  window.addEventListener('orientationchange', autoCloseOnResize);
+  // Run once on load
+  autoCloseOnResize();
 }
 
 // Sticky header shadow on scroll
@@ -111,28 +131,30 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-// RTL / LTR direction support with persistent toggle
+// Language (AR/EN) toggle with persistent setting; applies matching direction
 (() => {
-  const saved = localStorage.getItem('dir');
-  const urlDir = new URLSearchParams(window.location.search).get('dir');
-  const initial = (urlDir === 'rtl' || urlDir === 'ltr') ? urlDir : (saved || 'ltr');
-  document.documentElement.setAttribute('dir', initial);
-  localStorage.setItem('dir', initial);
+  const saved = localStorage.getItem('lang');
+  const urlLang = new URLSearchParams(window.location.search).get('lang');
+  const initial = (urlLang === 'ar' || urlLang === 'en') ? urlLang : (saved || 'ar');
+  document.documentElement.setAttribute('lang', initial);
+  document.documentElement.setAttribute('dir', initial === 'ar' ? 'rtl' : 'ltr');
+  localStorage.setItem('lang', initial);
 
   const container = document.querySelector('header .flex.items-center.gap-3');
   if (container) {
     const btn = document.createElement('button');
     btn.type = 'button';
-    btn.id = 'dirToggle';
+    btn.id = 'langToggle';
     btn.className = 'hidden sm:inline-flex items-center px-3 py-2 rounded-lg border border-slate-300 hover:bg-slate-50 text-sm';
     const updateLabel = () => {
-      const current = document.documentElement.getAttribute('dir');
-      btn.textContent = current === 'rtl' ? 'LTR' : 'RTL';
+      const current = document.documentElement.getAttribute('lang');
+      btn.textContent = current === 'ar' ? 'EN' : 'AR';
     };
     btn.addEventListener('click', () => {
-      const next = document.documentElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
-      document.documentElement.setAttribute('dir', next);
-      localStorage.setItem('dir', next);
+      const next = document.documentElement.getAttribute('lang') === 'ar' ? 'en' : 'ar';
+      document.documentElement.setAttribute('lang', next);
+      document.documentElement.setAttribute('dir', next === 'ar' ? 'rtl' : 'ltr');
+      localStorage.setItem('lang', next);
       updateLabel();
     });
     updateLabel();
